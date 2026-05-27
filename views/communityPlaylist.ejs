@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  
+  <%- include('partials/head.ejs') %>
+  <title>Mixify</title>
+
+  <%- include('partials/nav.ejs') %>
+
+  <body>
+    <!-- <form> -->
+      <div class="card resultCard">
+      <h1>Search in community playlist</h1>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+        </span>
+        <input type="text" name="searchBox" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping">
+        <button id="searchMethod" class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">Search by</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><button id="searchSong" class="dropdown-item">Song</button></li>
+          <li><button id="searchArtist" class="dropdown-item">Artist</button></li>
+        </ul>
+      </div>
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="selectAll" style="padding-right:10px">Select All</label>
+            <input class="form-check-input" type="checkbox" id="selectAll" onchange="toggleCheckboxes()"></input>
+            <button id="deleteButton" class="btn btn-danger btn-delete" disabled>Delete</button>
+          
+      </div>
+     </div>
+
+    <div class="songCardContainer">
+      
+      <% if (songs.length > 0) { %>
+        <% songs.forEach(function(song) { %>
+          <div class="card songCard">
+              
+              <img src="<%= song.albumImage %>" alt="Song Image">
+              <hr class="solid">
+              <h2 class="songTitlePlaylist"><%= song.title %></h2>
+              <p class="note"><%= song.name %></p>
+              <hr class="solid">
+               <% if (song.preview != null) { %>
+                <audio controls>
+                  <source src="<%= song.preview %>" type="audio/mpeg">
+                </audio>
+                   <% } else {%>
+                     <h3>No track preview available</h3>
+                   <% }%>
+
+
+             <div class="form-check form-switch">
+                <input class="form-check-input songCheckbox" type="checkbox" value="<%= song.songId %>">
+              </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <p>No results found.</p>
+      <% } %>
+    </div>
+    <script src="/js/script-playlist.js"></script>
+  </body>
+</html>
