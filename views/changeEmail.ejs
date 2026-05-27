@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  
+  <%- include('partials/head.ejs') %>
+  <title>Mixify</title>
+  <body class="verticalAlign">
+    <div class="logo" style="width: 400px">
+      <img src="img/Untitled-1.gif" width="100%">
+    </div>
+
+    <div class="card" id="loginCard">
+      <div class="card-body">
+        
+        <form action="/changeEmail" method="POST">
+          <h1>Change Email</h1>
+          
+          <div class="input-group mb-3">
+            <input type="email" name="currentEmail" class="form-control myInput" placeholder="Current Email" aria-label="Email" aria-describedby="button-addon2">
+          </div>
+          <% if(typeof(error) != "undefined") { %>
+            <% if(error == "emailError") { %>
+              <div id="emailError" class="alert alert-danger form-control">Incorrect Email. Try again</div>
+            <% } %>
+          <% } %>    
+          <div class="input-group mb-3">
+            <input type="email" name="newEmail" class="form-control myInput" placeholder="New Email" aria-label="Email" aria-describedby="button-addon2">
+          </div>
+      
+          <button type="submit" class="btn btn-primary" class="greenToViolet">Change Email</button>
+        </form>
+        
+      </div>
+    </div>
+    <script src="/js/script-changeEmail.js"></script>
+  </body>
+</html>
