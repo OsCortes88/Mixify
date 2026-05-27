@@ -1,0 +1,36 @@
+<!-- search.ejs -->
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs') %>
+<head>
+  <title>Search Results</title>
+  <%- include('partials/nav.ejs') %>
+</head>
+<body>
+  <div class="card resultCard">
+  <h1 style="padding: 0px; margin: 0px">
+    Results for "<%= query %>"
+  </h1>
+  </div>
+  <div class="songCardContainer">
+    <% if (songs.length > 0) { %>
+      <% songs.forEach(function(song) { %>
+        <div class="card songCard">
+          <img src="<%= song.image %>" alt="Song Image">
+          <hr class="solid">
+          <h2 class="songTitle"><%= song.title %></h2>
+          <p class="note"><%= song.artist %></p>
+          <div style="display:inline-flex">
+            <form action="/addToPlaylist" method="POST">
+              <input type="hidden" name="trackId" value="<%= song.id %>">
+              <button type="submit" class="btn btn-primary btn-add rounded-circle">+</button>
+            </form>
+          </div>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <p>No results found.</p>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('partials/head.ejs') %>
+  
+<%- include('partials/nav.ejs') %>
+  
+<body>
+
+  <div style="text-align:center">
+    <div class="content">
+      <div>
+        <div class="card resultCard">
+          <h1 style="padding: 0px; margin: 0px">
+            Top hits from <%= artistName %>
+          </h1>
+        </div>
+
+        <% if (typeof(artistName) != "undefined") { %>
+        <hr>
+
+        <% if (topTracks.length > 0) { %>
+        <% topTracks.forEach(function(track, artistHits) { %>
+        <div class="card rankingCard">
+          <div class="innerDiv flex-container">
+            <div class="innerDiv coverImage">
+              <!-- Put album image here -->
+              <img src="<%= track.album.images[0].url %>" class="topHitsImg">
+              <h3 style="margin-right: 15px;"><%= track.name %></h3>
+              <p class="note"><%= track.album.artists[0].name %></p>
+            </div>
+            
+
+            <div class="innerDiv" style="text-align: center">
+              <h1 class="rankingNumber">#<%= artistHits + 1 %></h1>
+
+              <div id="statData">
+                <h3>Released: <%= track.album.release_date %></h3>
+                <hr>
+                <h3>Album: <%= track.album.name %></h3>
+                <hr>
+                 <% if (track.preview_url != null) { %>
+                <audio controls>
+                  <source src="<%= track.preview_url %>" type="audio/mpeg">
+                </audio>
+                   <% } else {%>
+                     <h3>No track preview available</h3>
+                   <% }%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <% }); %>
+
+        <% } else { %>
+        <p>No top tracks found for <%= artistName %> </p>
+        <% } %>
+
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+</body>
