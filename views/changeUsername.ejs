@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  
+  <%- include('partials/head.ejs') %>
+  <title>Mixify</title>
+  <body class="verticalAlign">
+    <div class="logo" style="width: 400px">
+      <img src="img/Untitled-1.gif" width="100%">
+    </div>
+
+    <div class="card" id="loginCard">
+      <div class="card-body">
+        
+        <form action="/changeUsername" method="POST">
+          <h1>Change Username</h1>
+          
+          <div class="input-group mb-3">
+            <input type="username" name="currentUsername" class="form-control myInput" placeholder="Current Username" aria-label="Username" aria-describedby="button-addon2">
+          </div>
+          <% if(typeof(error) != "undefined") { %>
+            <% if(error == "usernameError") { %>
+              <div id="usernameError" class="alert alert-danger form-control">Incorrect username. Try again</div>
+            <% } %>
+          <% } %>
+          <div class="input-group mb-3">
+            <input type="username" name="newUsername" class="form-control myInput" placeholder="New Username" aria-label="Username" aria-describedby="button-addon2">
+          </div>
+          <% if(typeof(error) != "undefined") { %>
+            <% if(error == "usernameTakenError") { %>
+              <div id="usernameTakenError" class="alert alert-danger form-control">User name already taken. Try again</div>
+            <% } %>
+          <% } %>
+          <button type="submit" class="btn btn-primary" class="greenToViolet">Change Username</button>
+        </form>
+      </div>
+    </div>
+    <script src="/js/script-changeUsername.js"></script>
+  </body>
+</html>
