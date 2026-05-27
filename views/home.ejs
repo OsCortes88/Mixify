@@ -1,0 +1,148 @@
+<!-- home.ejs -->
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head.ejs') %>
+  <title>Mixify</title>
+  <%- include('partials/nav.ejs') %>
+    
+  <body>
+    <br>
+
+    <div class="cardScroll">
+      New Singles
+      <div class="containerScroll">
+        <% newReleases.singles.forEach(function(single, index) { %>
+          <a data-toggle="modal" data-target="#exampleModalToggle<%= index %>">
+            <div class="songScroll">
+              <img src="<%= single.image %>" alt="single Image" class="scrollImages">
+              <h2 class="scrollTitle"><%= single.title %></h2>
+              <p class="note scrollNote">
+                <%= single.artist %></p>
+            </div>
+          </a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalToggle<%= index %>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel<%= index %>" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="<%= single.image %>" alt="Single Image" class="modal-image">
+                  <p id="exampleModalToggleLabel<%= index %>"><%= single.title %></p>
+                  <h5>Artist:</h5>
+                  <p class="note"><%= single.artist %></p>
+                  <h5>Release Date:</h5>
+                  <p class="note"><%= formatDate(single.releaseDate) %></p>
+                </div>
+                <div class="modal-footer">
+                  <a href="<%= single.externalURLS %>" class="spotifyRedirect">
+                    <img src="img/spotify-logos/Full_Logo_Green_PMS_C.svg" class="modal-image" alt="Spotify Redirect">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <div class="navigation">
+        <button class="btn btn-primary scrollButton left">&lt;</button>
+        <button class="btn btn-primary scrollButton right">&gt;</button>
+      </div>
+    </div>
+    <br>
+
+    <div class="cardScroll">
+      New Albums
+      <div class="containerScroll containerScroll2">
+        <% newReleases.albums.forEach(function(album, index) { %>
+          <a data-toggle="modal" data-target="#exampleModalToggle<%= index + newReleases.singles.length %>">
+            <div class="songScroll">
+              <img src="<%= album.image %>" alt="album Image" class="scrollImages">
+              <h2 class="scrollTitle"><%= album.title %></h2>
+              <p class="note scrollNote"><%= album.artist %></p>
+            </div>
+          </a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalToggle<%= index + newReleases.singles.length %>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel<%= index + newReleases.singles.length %>" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="<%= album.image %>" alt="Album Image" class="modal-image">
+                  <p id="exampleModalToggleLabel<%= index + newReleases.singles.length %>"><%= album.title %></p>
+                  <p class="note"><%= album.artist %></p>
+                  <p class="note"><%= album.totalTracks %></p>
+                  <p class="note"><%= formatDate(album.releaseDate) %></p>
+                </div>
+                <div class="modal-footer">
+                  <a href="<%= album.externalURLS %>" class="spotifyRedirect">
+                    <img src="img/spotify-logos/Full_Logo_Green_PMS_C.svg" class="modal-image" alt="Spotify Redirect">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <div class="navigation">
+        <button class="btn btn-primary scrollButton2 left">&lt;</button>
+        <button class="btn btn-primary scrollButton2 right">&gt;</button>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="cardScroll">
+      New Compilations
+      <div class="containerScroll containerScroll3">
+        <% newReleases.compilations.forEach(function(compilation, index) { %>
+          <a data-toggle="modal" data-target="#exampleModalToggle<%= index + newReleases.albums.length + newReleases.singles.length %>">
+            <div class="songScroll">
+              <img src="<%= compilation.image %>" alt="compilation Image" class="scrollImages">
+              <h2 class="scrollTitle"><%= compilation.title %></h2>
+              <p class="note scrollNote"><%= compilation.artist %></p>
+            </div>
+          </a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalToggle<%= index + newReleases.albums.length + newReleases.singles.length %>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel<%= index + newReleases.albums.length + newReleases.singles.length %>" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img src="<%= compilation.image %>" alt="Compilation Image" class="modal-image">
+                  <p id="exampleModalToggleLabel<%= index + newReleases.albums.length + newReleases.singles.length %>"><%= compilation.title %></p>
+                  <p><%= compilation.artist %></p>
+                  <p class="note"><%= compilation.totalTracks %></p>
+                  <p class="note"><%= formatDate(compilation.releaseDate) %></p>
+                </div>
+                <div class="modal-footer">
+                  <a href="<%= compilation.externalURLS %>" class="spotifyRedirect">
+                    <img src="img/spotify-logos/Full_Logo_Green_PMS_C.svg" class="modal-image" alt="Spotify Redirect">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <div class="navigation">
+        <button class="btn btn-primary scrollButton3 left">&lt;</button>
+        <button class="btn btn-primary scrollButton3 right">&gt;</button>
+      </div>
+    </div>
+    <br><br>
+    <script src="/js/script-scroll.js"></script>
+  </body>
+</html>
+
