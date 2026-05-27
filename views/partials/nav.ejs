@@ -1,0 +1,59 @@
+<header>
+  <nav class="navbar navbar-expand-lg" style="">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home">
+            <img src="/img/logo.png" alt="Mixify" width="200" height="80">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <!--<a class="nav-link active" href="#" style="margin-left:20px; margin-right:20px; color:white">Features</a>-->
+      </div>
+    </div>
+    
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <form action="/communityPlaylist">
+          <button type="submit" class="btn btn-outline-light" style="vertical-align:middle">Community Playlist</button>
+        </form>
+        
+      </div>
+    
+  <form method="get">
+
+<div class="input-group mb-3" style="margin-top: 16px">
+  <span class="input-group-text">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg>
+  </span>
+  <input type="text" placeholder="Search" name="query" class="form-control" aria-label="Text input with dropdown button" id="search-input">
+  <button class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" id="search-button" disabled>Search by</button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item" type="submit" formaction="/search">Song</button></li>
+    <li><button class="dropdown-item" type="submit" formaction="/artistHits">Artist</button></li>
+  </ul>
+</div>
+  </form>
+
+
+
+      <div class="dropdown">
+    <button class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" aria-labelledby="navbarDropdownMenuLink">Profile</button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" href="/changeUsername">Change Username</a></li>
+      <li><a class="dropdown-item" href="/changePassword">Change Password</a></li>
+      <li><a class="dropdown-item" href="/changeEmail">Change Email</a></li>
+      <li><a class="dropdown-item" href="/logout">Logout</a></li>
+    </ul>
+    
+  </div>
+
+    <script src="/js/script-nav.js"></script>
+</nav>
+</header>
