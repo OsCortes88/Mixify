@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  
+  <%- include('partials/head.ejs') %>
+  <title>Mixify</title>
+  <body class="verticalAlign">
+
+        <div class="logo" style="width: 400px">
+      <img src="img/Untitled-1.gif" width="100%">
+    </div>
+
+
+    <div class="card" id="loginCard">
+      
+      <div class="card-body">    
+        <form action="/login" method="POST">
+          <h1>Login</h1>
+          <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">@</span>
+            <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+          
+          <% if(typeof(error) != "undefined") { %>
+            <% if(error == "usernameError") { %>
+              <div id="userNameError" class="alert alert-danger form-control">That username does not exist</div>
+            <% } %>
+          <% } %>
+          
+          <div class="input-group mb-3">
+            <input type="password" name="password" class="form-control myInput" placeholder="Password" aria-label="Password" aria-describedby="button-addon2">
+            <button class="btn btn-outline-light" type="button" id="button-addon2 " onclick="showPassword()">Show</button>
+          </div>
+
+          <% if(typeof(error) != "undefined") { %>
+            <% if(error == "passwordError") { %>
+              <div id="passworError" class="alert alert-danger form-control">Wrong password</div>
+            <% } %>
+          <% } %>
+          <button type="submit"  class="btn btn-primary" class="greenToViolet">Sign-in</button>
+        </form>
+        
+      <hr class="solid">
+      
+      <span class="note">Don't have an account?</span>
+      <br>
+      <a href="/signup">
+        <button type="button" class="btn btn-secondary">Sign-Up</button>
+      </a>
+  
+      </div>
+      
+    </div>
+  </body>
+</html>
